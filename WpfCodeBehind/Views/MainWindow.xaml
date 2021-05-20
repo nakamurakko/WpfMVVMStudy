@@ -1,0 +1,50 @@
+﻿<Window x:Class="WpfCodeBehind.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="WpfCodeBehind"
+        FontSize="15"
+        Height="300"
+        Width="400">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="RequestIdTextBox"
+                     Grid.Column="0"
+                     Text="{Binding RequestId}" />
+            <Button x:Name="GetUserButton"
+                    Grid.Column="1"
+                    Content="検索"
+                    Click="GetUserButton_Click" />
+            <TextBlock x:Name="UserNameTextBlock"
+                       Grid.Column="2"
+                       Text="{Binding User.Name}" />
+        </Grid>
+
+        <ListView x:Name="UserListView"
+                  Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Id}" />
+                        <TextBlock Text=":" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</Window>
