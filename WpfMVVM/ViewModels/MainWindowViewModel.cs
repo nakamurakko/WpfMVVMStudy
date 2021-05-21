@@ -1,13 +1,17 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using SampleModule.DataTypes;
 using SampleModule.Models;
 using System.Collections.ObjectModel;
+using WpfMVVM.Dialogs;
 
 namespace WpfMVVM.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        private IDialogService dialogService;
+
         private User _user;
         /// <summary>
         /// ユーザー情報。
@@ -41,8 +45,10 @@ namespace WpfMVVM.ViewModels
         /// <summary>
         /// コンストラクター。
         /// </summary>
-        public MainWindowViewModel()
+        public MainWindowViewModel(IDialogService dialogService)
         {
+            this.dialogService = dialogService;
+
             foreach (var user in SampleModel.GetUsers())
             {
                 Users.Add(user);
@@ -64,6 +70,21 @@ namespace WpfMVVM.ViewModels
             else
             {
                 User = null;
+
+                dialogService.ShowDialog(
+                    nameof(NotificationDialog),
+                    NotificationDialogParam.CreateDialogMessageParam("対象データはありません。"),
+                    dialogResult =>
+                    {
+                        switch (dialogResult.Result)
+                        {
+                            case ButtonResult.OK:
+                                // OKの場合の処理。
+                                break;
+                            default:
+                                break;
+                        }
+                    });
             }
         }
     }

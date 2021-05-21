@@ -1,5 +1,6 @@
 ﻿using Prism.Ioc;
 using System.Windows;
+using WpfMVVM.Dialogs;
 using WpfMVVM.Views;
 
 namespace WpfMVVM
@@ -16,7 +17,8 @@ namespace WpfMVVM
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            // https://prismlibrary.com/docs/wpf/dialog-service.html
+            containerRegistry.RegisterDialog<NotificationDialog, NotificationDialogViewModel>();
         }
     }
 }

@@ -39,13 +39,14 @@ namespace WpfCodeBehind.Views
         {
             User user;
 
-            if (SampleModel.TryGetUser(int.Parse(RequestIdTextBox.Text), out user))
+            if (int.TryParse(RequestIdTextBox.Text, out var i) && SampleModel.TryGetUser(int.Parse(RequestIdTextBox.Text), out user))
             {
                 UserNameTextBlock.Text = user.Name;
             }
             else
             {
                 UserNameTextBlock.Text = "";
+                MessageBox.Show("対象データはありません。", "Notification");
             }
         }
     }
