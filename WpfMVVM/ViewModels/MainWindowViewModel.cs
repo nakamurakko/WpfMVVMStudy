@@ -4,9 +4,8 @@ using Prism.Services.Dialogs;
 using SampleModule.DataTypes;
 using SampleModule.Models;
 using System.Collections.ObjectModel;
-using WpfMVVM.Dialogs;
+using WpfMVVM.NotificationDialogs;
 using WpfMVVM.UserDetailDialogs;
-using WpfMVVM.Views;
 
 namespace WpfMVVM.ViewModels
 {

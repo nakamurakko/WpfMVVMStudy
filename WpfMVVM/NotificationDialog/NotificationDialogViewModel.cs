@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WpfMVVM.Dialogs
+namespace WpfMVVM.NotificationDialogs
 {
     /// <summary>
     /// NotificationDialog 用 ViewModel。

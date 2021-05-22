@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WpfMVVM.Dialogs
+namespace WpfMVVM.NotificationDialogs
 {
     /// <summary>
     /// NotificationDialog パラメーター用クラス。

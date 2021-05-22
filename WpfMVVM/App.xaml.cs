@@ -1,8 +1,7 @@
 ﻿using Prism.Ioc;
 using System.Windows;
-using WpfMVVM.Dialogs;
+using WpfMVVM.NotificationDialogs;
 using WpfMVVM.UserDetailDialogs;
-using WpfMVVM.ViewModels;
 using WpfMVVM.Views;
 
 namespace WpfMVVM

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace WpfMVVM.Dialogs
+namespace WpfMVVM.NotificationDialogs
 {
     /// <summary>
     /// NotificationDialog(通知ダイアログ) クラス。
