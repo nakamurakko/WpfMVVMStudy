@@ -2,6 +2,7 @@
 using SampleModule.Models;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WpfCodeBehind.Views
 {
@@ -47,6 +48,25 @@ namespace WpfCodeBehind.Views
             {
                 UserNameTextBlock.Text = "";
                 MessageBox.Show("対象データはありません。", "Notification");
+            }
+        }
+
+        /// <summary>
+        /// リストボックスのアイテムの MouseDown イベント。
+        /// ユーザー詳細情報を表示する。
+        /// </summary>
+        /// <param name="sender">通知元のオブジェクト。</param>
+        /// <param name="e">イベントデータ。</param>
+        private void UserItem_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            User user = (sender as Grid).DataContext as User;
+
+            if (user != null)
+            {
+                var userDetailWindow = new UserDetailWindow();
+                userDetailWindow.SetUser(user);
+
+                userDetailWindow.ShowDialog();
             }
         }
     }

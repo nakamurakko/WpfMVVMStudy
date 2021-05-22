@@ -1,6 +1,8 @@
 ﻿using Prism.Ioc;
 using System.Windows;
 using WpfMVVM.Dialogs;
+using WpfMVVM.UserDetailDialogs;
+using WpfMVVM.ViewModels;
 using WpfMVVM.Views;
 
 namespace WpfMVVM
@@ -19,6 +21,7 @@ namespace WpfMVVM
         {
             // https://prismlibrary.com/docs/wpf/dialog-service.html
             containerRegistry.RegisterDialog<NotificationDialog, NotificationDialogViewModel>();
+            containerRegistry.RegisterDialog<UserDetailDialog, UserDetailDialogViewModel>();
         }
     }
 }

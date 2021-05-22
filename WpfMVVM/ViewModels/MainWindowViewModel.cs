@@ -5,6 +5,8 @@ using SampleModule.DataTypes;
 using SampleModule.Models;
 using System.Collections.ObjectModel;
 using WpfMVVM.Dialogs;
+using WpfMVVM.UserDetailDialogs;
+using WpfMVVM.Views;
 
 namespace WpfMVVM.ViewModels
 {
@@ -43,8 +45,17 @@ namespace WpfMVVM.ViewModels
         public DelegateCommand GetUserCommand { get; set; }
 
         /// <summary>
+        /// ユーザー情報表示コマンド。
+        /// </summary>
+        public DelegateCommand<User> ShowUserDetailCommand { get; set; }
+
+        /// <summary>
         /// コンストラクター。
         /// </summary>
+        /// <param name="dialogService">Dialog Service</param>
+        /// <remarks>
+        /// https://prismlibrary.com/docs/wpf/dialog-service.html#using-the-dialog-service
+        /// </remarks>
         public MainWindowViewModel(IDialogService dialogService)
         {
             this.dialogService = dialogService;
@@ -55,6 +66,7 @@ namespace WpfMVVM.ViewModels
             }
 
             GetUserCommand = new DelegateCommand(() => GetUserCommandExecute());
+            ShowUserDetailCommand = new DelegateCommand<User>((user) => ShowUserDetailCommandExecute(user));
         }
 
         /// <summary>
@@ -86,6 +98,23 @@ namespace WpfMVVM.ViewModels
                         }
                     });
             }
+        }
+
+        /// <summary>
+        /// ユーザー詳細情報表示処理。
+        /// </summary>
+        private void ShowUserDetailCommandExecute(User user)
+        {
+            var parameters = new DialogParameters();
+            parameters.Add(nameof(User), user);
+
+            dialogService.ShowDialog(
+                nameof(UserDetailDialog),
+                parameters,
+                dialogResult =>
+                {
+                    // UserDetailWindow 表示後の処理。
+                });
         }
     }
 }

@@ -35,13 +35,36 @@
 
         <ListView x:Name="UserListView"
                   Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Id}" />
-                        <TextBlock Text=":" />
-                        <TextBlock Text="{Binding Name}" />
-                    </StackPanel>
+                    <Grid>
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
+                                <EventSetter Event="MouseDown"
+                                             Handler="UserItem_MouseDown" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="{Binding Id}" />
+                        <TextBlock Grid.Column="1"
+                                   Text=":" />
+                        <TextBlock Grid.Column="2"
+                                   Text="{Binding Name}" />
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

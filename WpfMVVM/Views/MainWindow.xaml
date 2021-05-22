@@ -1,5 +1,6 @@
 ﻿<Window x:Class="WpfMVVM.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:viewModels="clr-namespace:WpfMVVM.ViewModels"
@@ -37,13 +38,36 @@
 
         <ListView Grid.Row="1"
                   ItemsSource="{Binding Users}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Id}" />
-                        <TextBlock Text=":" />
-                        <TextBlock Text="{Binding Name}" />
-                    </StackPanel>
+                    <Grid>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <prism:InvokeCommandAction Command="{Binding DataContext.ShowUserDetailCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                                           CommandParameter="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="{Binding Id}" />
+                        <TextBlock Grid.Column="1"
+                                   Text=":" />
+                        <TextBlock Grid.Column="2"
+                                   Text="{Binding Name}" />
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
