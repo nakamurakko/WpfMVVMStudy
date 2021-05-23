@@ -36,17 +36,17 @@ namespace WpfMVVM.ViewModels
         /// <summary>
         /// ユーザー一覧。
         /// </summary>
-        public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();
+        public ObservableCollection<User> Users { get; private set; } = new ObservableCollection<User>();
 
         /// <summary>
         /// ユーザー情報取得コマンド。
         /// </summary>
-        public DelegateCommand GetUserCommand { get; set; }
+        public DelegateCommand GetUserCommand { get; private set; }
 
         /// <summary>
         /// ユーザー情報表示コマンド。
         /// </summary>
-        public DelegateCommand<User> ShowUserDetailCommand { get; set; }
+        public DelegateCommand<User> ShowUserDetailCommand { get; private set; }
 
         /// <summary>
         /// コンストラクター。
