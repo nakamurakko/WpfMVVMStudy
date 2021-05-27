@@ -6,6 +6,20 @@
              MinHeight="100"
              MinWidth="180">
 
+    <!-- https://prismlibrary.com/docs/wpf/dialog-service.html#style-the-dialogwindow -->
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation"
+                    Value="CenterScreen" />
+            <Setter Property="ResizeMode"
+                    Value="NoResize" />
+            <Setter Property="ShowInTaskbar"
+                    Value="False" />
+            <Setter Property="SizeToContent"
+                    Value="WidthAndHeight" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
