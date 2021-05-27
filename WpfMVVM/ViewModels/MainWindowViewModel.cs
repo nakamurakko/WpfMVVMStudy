@@ -84,7 +84,7 @@ namespace WpfMVVM.ViewModels
 
                 dialogService.ShowDialog(
                     nameof(NotificationDialog),
-                    NotificationDialogParam.CreateDialogMessageParam("対象データはありません。"),
+                    NotificationDialogParam.CreateDialogMessageParam("対象データはありません。", NotificationDialogButtons.Ok),
                     dialogResult =>
                     {
                         switch (dialogResult.Result)

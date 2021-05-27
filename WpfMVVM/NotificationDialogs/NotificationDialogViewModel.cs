@@ -4,6 +4,7 @@ using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WpfMVVM.NotificationDialogs;
 
 namespace WpfMVVM.NotificationDialogs
 {
@@ -22,6 +23,27 @@ namespace WpfMVVM.NotificationDialogs
         {
             get => _message;
             set => SetProperty(ref _message, value);
+        }
+
+
+        private bool _isOkButtonVisible;
+        /// <summary>
+        /// OK ボタンの表示可否。
+        /// </summary>
+        public bool IsOkButtonVisible
+        {
+            get => _isOkButtonVisible;
+            set => SetProperty(ref _isOkButtonVisible, value);
+        }
+
+        private bool _isCancelButtonVisible;
+        /// <summary>
+        /// キャンセルボタンの表示可否。
+        /// </summary>
+        public bool IsCancelButtonVisible
+        {
+            get => _isCancelButtonVisible;
+            set => SetProperty(ref _isCancelButtonVisible, value);
         }
 
         private DelegateCommand<string> _closeDialogCommand;
@@ -72,6 +94,11 @@ namespace WpfMVVM.NotificationDialogs
         public void OnDialogOpened(IDialogParameters parameters)
         {
             Message = parameters.GetValue<string>(NotificationDialogParamKey.DialogMessage);
+
+            var dialogButtons = parameters.GetValue<NotificationDialogButtons>(NotificationDialogParamKey.DialogButtons);
+
+            IsOkButtonVisible = (dialogButtons == NotificationDialogButtons.Ok) || (dialogButtons == NotificationDialogButtons.OkCancel);
+            IsCancelButtonVisible = dialogButtons == NotificationDialogButtons.OkCancel;
         }
     }
 }
