@@ -16,20 +16,23 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <TextBlock Grid.Column="0"
+                       Text="検索したいID : " />
             <TextBox x:Name="RequestIdTextBox"
-                     Grid.Column="0"
+                     Grid.Column="1"
                      Text="{Binding RequestId}" />
             <Button x:Name="GetUserButton"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     Content="検索"
                     Click="GetUserButton_Click" />
             <TextBlock x:Name="UserNameTextBlock"
-                       Grid.Column="2"
+                       Grid.Column="3"
                        Text="{Binding User.Name}" />
         </Grid>
 

@@ -22,17 +22,20 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0"
+            <TextBlock Grid.Column="0"
+                       Text="検索したいID : " />
+            <TextBox Grid.Column="1"
                      Text="{Binding RequestId}" />
-            <Button Grid.Column="1"
+            <Button Grid.Column="2"
                     Command="{Binding GetUserCommand}"
                     Content="検索" />
-            <TextBlock Grid.Column="2"
+            <TextBlock Grid.Column="3"
                        Text="{Binding User.Name}" />
         </Grid>
 
