@@ -57,7 +57,7 @@ namespace WpfCodeBehind.Views
         /// </summary>
         /// <param name="sender">通知元のオブジェクト。</param>
         /// <param name="e">イベントデータ。</param>
-        private void UserItem_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void UserItemGrid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             User user = (sender as Grid).DataContext as User;
 

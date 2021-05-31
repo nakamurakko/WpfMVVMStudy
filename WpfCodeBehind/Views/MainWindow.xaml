@@ -45,13 +45,14 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.Resources>
+                    <Grid x:Name="UserItemGrid"
+                          MouseDown="UserItemGrid_MouseDown">
+                        <!--<Grid.Resources>
                             <Style TargetType="Grid">
                                 <EventSetter Event="MouseDown"
                                              Handler="UserItem_MouseDown" />
                             </Style>
-                        </Grid.Resources>
+                        </Grid.Resources>-->
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
