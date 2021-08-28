@@ -73,8 +73,7 @@ namespace WpfMVVM.ViewModels
         /// </summary>
         private void GetUserCommandExecute()
         {
-            User user;
-            if (SampleModel.TryGetUser(RequestId, out user))
+            if (SampleModel.TryGetUser(RequestId, out User user))
             {
                 User = user;
             }
