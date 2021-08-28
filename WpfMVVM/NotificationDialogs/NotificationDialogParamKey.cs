@@ -5,7 +5,7 @@ using System.Text;
 namespace WpfMVVM.NotificationDialogs
 {
     /// <summary>
-    /// NotificationDialog 
+    /// NotificationDialog パラメーターキー用クラス。
     /// </summary>
     public sealed class NotificationDialogParamKey
     {
