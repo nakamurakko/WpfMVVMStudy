@@ -1,10 +1,10 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using PrismNotification.Dialogs;
 using SampleModule.DataTypes;
 using SampleModule.Models;
 using System.Collections.ObjectModel;
-using WpfMVVM.NotificationDialogs;
 using WpfMVVM.UserDetailDialogs;
 
 namespace WpfMVVM.ViewModels
@@ -81,9 +81,10 @@ namespace WpfMVVM.ViewModels
             {
                 User = null;
 
-                dialogService.ShowDialog(
-                    nameof(NotificationDialog),
-                    NotificationDialogParam.CreateDialogMessageParam("対象データはありません。", NotificationDialogButtons.Ok),
+                NotificationDialogService.ShowDialog(
+                    dialogService,
+                    "対象データはありません。",
+                    NotificationDialogButtons.Ok,
                     dialogResult =>
                     {
                         switch (dialogResult.Result)
