@@ -11,7 +11,7 @@ namespace WpfMVVM.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private IDialogService dialogService;
+        private IDialogService _dialogService;
 
         private User _user;
         /// <summary>
@@ -57,7 +57,7 @@ namespace WpfMVVM.ViewModels
         /// </remarks>
         public MainWindowViewModel(IDialogService dialogService)
         {
-            this.dialogService = dialogService;
+            this._dialogService = dialogService;
 
             foreach (var user in SampleModel.GetUsers())
             {
@@ -82,7 +82,7 @@ namespace WpfMVVM.ViewModels
                 User = null;
 
                 NotificationDialogService.ShowDialog(
-                    dialogService,
+                    _dialogService,
                     "対象データはありません。",
                     NotificationDialogButtons.Ok,
                     dialogResult =>
@@ -107,7 +107,7 @@ namespace WpfMVVM.ViewModels
             var parameters = new DialogParameters();
             parameters.Add(nameof(User), user);
 
-            dialogService.ShowDialog(
+            _dialogService.ShowDialog(
                 nameof(UserDetailDialog),
                 parameters,
                 dialogResult =>
