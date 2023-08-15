@@ -4,24 +4,23 @@ using System.Windows;
 using WpfMVVM.UserDetailDialogs;
 using WpfMVVM.Views;
 
-namespace WpfMVVM
+namespace WpfMVVM;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App
+    protected override Window CreateShell()
     {
-        protected override Window CreateShell()
-        {
-            return Container.Resolve<MainWindow>();
-        }
+        return this.Container.Resolve<MainWindow>();
+    }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-            // https://prismlibrary.com/docs/wpf/dialog-service.html
-            containerRegistry.RegisterDialog<UserDetailDialog, UserDetailDialogViewModel>();
+    protected override void RegisterTypes(IContainerRegistry containerRegistry)
+    {
+        // https://prismlibrary.com/docs/wpf/dialog-service.html
+        containerRegistry.RegisterDialog<UserDetailDialog, UserDetailDialogViewModel>();
 
-            NotificationDialogService.RegisterDialog(containerRegistry);
-        }
+        NotificationDialogService.RegisterDialog(containerRegistry);
     }
 }
