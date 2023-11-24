@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using SampleModule.DataTypes;
 using SampleModule.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
+using WpfMVVM.Services;
 using WpfMVVM.Services.Interfaces;
 using WpfMVVM.UserDetailDialogs;
 
@@ -38,9 +40,9 @@ public sealed partial class MainWindowViewModel : ObservableObject
     /// <remarks>
     /// 
     /// </remarks>
-    public MainWindowViewModel(/*IDialogService dialogService*/)
+    public MainWindowViewModel()
     {
-        //this._dialogService = dialogService;
+        this._dialogService = AppSharedServices.Services.GetService<IDialogService>();
 
         foreach (User user in SampleModel.GetUsers())
         {
