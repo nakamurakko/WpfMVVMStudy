@@ -1,26 +1,14 @@
-﻿using Prism.Ioc;
-using PrismNotification.Dialogs;
-using System.Windows;
-using WpfMVVM.UserDetailDialogs;
-using WpfMVVM.Views;
+﻿using System.Windows;
 
 namespace WpfMVVM;
 
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App
+public partial class App : Application
 {
-    protected override Window CreateShell()
+    public App()
     {
-        return this.Container.Resolve<MainWindow>();
-    }
-
-    protected override void RegisterTypes(IContainerRegistry containerRegistry)
-    {
-        // https://prismlibrary.com/docs/wpf/dialog-service.html
-        containerRegistry.RegisterDialog<UserDetailDialog, UserDetailDialogViewModel>();
-
-        NotificationDialogService.RegisterDialog(containerRegistry);
+        this.InitializeComponent();
     }
 }

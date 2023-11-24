@@ -1,28 +1,18 @@
-﻿using Prism.Mvvm;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SampleModule.DataTypes;
 
-public class User : BindableBase
+public partial class User : ObservableObject
 {
-
+    /// <summary>
+    /// ID。
+    /// </summary>
+    [ObservableProperty]
     private int _id;
+
     /// <summary>
-    /// ID
+    /// 名前。
     /// </summary>
-    public int Id
-    {
-        get => this._id;
-        set => this.SetProperty(ref _id, value);
-    }
-
-
+    [ObservableProperty]
     private string _name;
-    /// <summary>
-    /// 名前
-    /// </summary>
-    public string Name
-    {
-        get => this._name;
-        set => this.SetProperty(ref _name, value);
-    }
 }

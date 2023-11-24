@@ -1,120 +1,105 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
-using PrismNotification.Dialogs;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using SampleModule.DataTypes;
 using SampleModule.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
+using WpfMVVM.Services;
+using WpfMVVM.Services.Interfaces;
 using WpfMVVM.UserDetailDialogs;
 
 namespace WpfMVVM.ViewModels;
 
-public sealed class MainWindowViewModel : BindableBase
+public sealed partial class MainWindowViewModel : ObservableObject
 {
     private IDialogService _dialogService;
 
-    private User _user;
     /// <summary>
     /// ユーザー情報。
     /// </summary>
-    public User User
-    {
-        get => this._user;
-        set => this.SetProperty(ref this._user, value);
-    }
+    [ObservableProperty]
+    private User _user;
 
-    private int _requestId;
     /// <summary>
     /// 取得したいユーザーのID。
     /// </summary>
-    public int RequestId
-    {
-        get => this._requestId;
-        set => this.SetProperty(ref this._requestId, value);
-    }
+    [ObservableProperty]
+    private int _requestId;
 
     /// <summary>
     /// ユーザー一覧。
     /// </summary>
-    public ObservableCollection<User> Users { get; private set; } = new ObservableCollection<User>();
-
-    /// <summary>
-    /// ユーザー情報取得コマンド。
-    /// </summary>
-    public DelegateCommand GetUserCommand { get; private set; }
-
-    /// <summary>
-    /// ユーザー情報表示コマンド。
-    /// </summary>
-    public DelegateCommand<User> ShowUserDetailCommand { get; private set; }
+    [ObservableProperty]
+    private ObservableCollection<User> _users = new ObservableCollection<User>();
 
     /// <summary>
     /// コンストラクター。
     /// </summary>
     /// <param name="dialogService">Dialog Service</param>
     /// <remarks>
-    /// https://prismlibrary.com/docs/wpf/dialog-service.html#using-the-dialog-service
+    /// 
     /// </remarks>
-    public MainWindowViewModel(IDialogService dialogService)
+    public MainWindowViewModel()
     {
-        this._dialogService = dialogService;
+        this._dialogService = AppSharedServices.Services.GetService<IDialogService>();
 
         foreach (User user in SampleModel.GetUsers())
         {
             this.Users.Add(user);
         }
-
-        this.GetUserCommand = new DelegateCommand(() => this.GetUserCommandExecute());
-        this.ShowUserDetailCommand = new DelegateCommand<User>((user) => this.ShowUserDetailCommandExecute(user));
     }
 
     /// <summary>
     /// ユーザー情報取得処理。
     /// </summary>
-    private void GetUserCommandExecute()
+    [RelayCommand]
+    private void GetUser()
     {
-        if (SampleModel.TryGetUser(RequestId, out User user))
+        if (SampleModel.TryGetUser(this.RequestId, out User user))
         {
-            User = user;
+            this.User = user;
         }
         else
         {
-            User = null;
+            this.User = null;
 
-            NotificationDialogService.ShowDialog(
-                this._dialogService,
-                "対象データはありません。",
-                NotificationDialogButtons.Ok,
-                dialogResult =>
-                {
-                    switch (dialogResult.Result)
-                    {
-                        case ButtonResult.OK:
-                            // OKの場合の処理。
-                            break;
-                        default:
-                            break;
-                    }
-                });
+            this._dialogService.ShowMesageDialog("対象データはありません。", "", MessageBoxButton.OK);
+            //NotificationDialogService.ShowDialog(
+            //    this._dialogService,
+            //    "対象データはありません。",
+            //    NotificationDialogButtons.Ok,
+            //    dialogResult =>
+            //    {
+            //        switch (dialogResult.Result)
+            //        {
+            //            case ButtonResult.OK:
+            //                // OKの場合の処理。
+            //                break;
+            //            default:
+            //                break;
+            //        }
+            //    });
         }
     }
 
     /// <summary>
     /// ユーザー詳細情報表示処理。
     /// </summary>
-    private void ShowUserDetailCommandExecute(User user)
+    [RelayCommand]
+    private void ShowUserDetail(User user)
     {
-        DialogParameters parameters = new DialogParameters()
-        {
-            { nameof(User), user }
-        };
+        //DialogParameters parameters = new DialogParameters()
+        //{
+        //    { nameof(User), user }
+        //};
 
-        this._dialogService.ShowDialog(
-            nameof(UserDetailDialog),
-            parameters,
-            dialogResult =>
-            {
-                // UserDetailWindow 表示後の処理。
-            });
+        //this._dialogService.ShowDialog(
+        //    nameof(UserDetailDialog),
+        //    parameters,
+        //    dialogResult =>
+        //    {
+        //        // UserDetailWindow 表示後の処理。
+        //    });
     }
 }

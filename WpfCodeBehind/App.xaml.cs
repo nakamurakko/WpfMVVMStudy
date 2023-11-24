@@ -1,22 +1,10 @@
-﻿using Prism.Ioc;
-using System.Windows;
-using WpfCodeBehind.Views;
+﻿using System.Windows;
 
-namespace WpfCodeBehind
+namespace WpfCodeBehind;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App
-    {
-        protected override Window CreateShell()
-        {
-            return Container.Resolve<MainWindow>();
-        }
-
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-
-        }
-    }
 }
