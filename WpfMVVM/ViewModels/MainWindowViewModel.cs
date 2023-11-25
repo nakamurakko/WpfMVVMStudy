@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SampleModule.DataTypes;
 using SampleModule.Models;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 using WpfMVVM.Services;
 using WpfMVVM.Services.Interfaces;
@@ -54,7 +55,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
     /// ユーザー情報取得処理。
     /// </summary>
     [RelayCommand]
-    private void GetUser()
+    private async Task GetUserAsync()
     {
         if (SampleModel.TryGetUser(this.RequestId, out User user))
         {
@@ -64,22 +65,15 @@ public sealed partial class MainWindowViewModel : ObservableObject
         {
             this.User = null;
 
-            this._dialogService.ShowMesageDialog("対象データはありません。", "", MessageBoxButton.OK);
-            //NotificationDialogService.ShowDialog(
-            //    this._dialogService,
-            //    "対象データはありません。",
-            //    NotificationDialogButtons.Ok,
-            //    dialogResult =>
-            //    {
-            //        switch (dialogResult.Result)
-            //        {
-            //            case ButtonResult.OK:
-            //                // OKの場合の処理。
-            //                break;
-            //            default:
-            //                break;
-            //        }
-            //    });
+            MessageBoxResult dialogResult = await this._dialogService.ShowMesageDialog("対象データはありません。", "", MessageBoxButton.OK);
+            switch (dialogResult)
+            {
+                case MessageBoxResult.OK:
+                    // OKの場合の処理。
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
