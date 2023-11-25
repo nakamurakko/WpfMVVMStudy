@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
+using WpfMVVM.Services;
+using WpfMVVM.ViewModels;
 
 namespace WpfMVVM.Views;
 
@@ -10,5 +13,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         this.InitializeComponent();
+
+        this.DataContext = AppSharedServices.Services.GetService<MainWindowViewModel>();
     }
 }

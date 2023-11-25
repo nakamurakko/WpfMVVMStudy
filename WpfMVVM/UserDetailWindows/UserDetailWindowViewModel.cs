@@ -1,12 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using SampleModule.DataTypes;
 
-namespace WpfMVVM.UserDetailDialogs;
+namespace WpfMVVM.UserDetailWindows;
 
-/// <summary>
-/// ユーザー詳細画面用 ViewModel。
-/// </summary>
-public partial class UserDetailDialogViewModel : ObservableObject
+public sealed partial class UserDetailWindowViewModel : ObservableObject
 {
     [ObservableProperty]
     private string _title = "ユーザー詳細画面";
@@ -14,7 +11,7 @@ public partial class UserDetailDialogViewModel : ObservableObject
     [ObservableProperty]
     private User _user;
 
-    public UserDetailDialogViewModel()
+    public UserDetailWindowViewModel()
     {
     }
 
@@ -31,5 +28,10 @@ public partial class UserDetailDialogViewModel : ObservableObject
     public void OnDialogOpened(/*IDialogParameters parameters*/)
     {
         //User = parameters.GetValue<User>(nameof(User));
+    }
+
+    public void SetUser(User user)
+    {
+        this.User = user;
     }
 }

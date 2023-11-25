@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using WpfMVVM.Services.Interfaces;
+using WpfMVVM.UserDetailWindows;
+using WpfMVVM.ViewModels;
 
 namespace WpfMVVM.Services;
 
@@ -25,6 +27,9 @@ public static class AppSharedServices
         ServiceCollection services = new ServiceCollection();
 
         services.AddSingleton<IDialogService, DialogService>();
+        services.AddTransient<MainWindowViewModel>();
+        services.AddTransient<UserDetailWindow>();
+        services.AddTransient<UserDetailWindowViewModel>();
 
         return services.BuildServiceProvider();
     }

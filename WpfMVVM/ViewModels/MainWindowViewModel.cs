@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using WpfMVVM.Services;
 using WpfMVVM.Services.Interfaces;
-using WpfMVVM.UserDetailDialogs;
+using WpfMVVM.UserDetailWindows;
 
 namespace WpfMVVM.ViewModels;
 
+/// <summary>
+/// ユーザー詳細画面用 ViewModel。
+/// </summary>
 public sealed partial class MainWindowViewModel : ObservableObject
 {
     private IDialogService _dialogService;
@@ -83,17 +86,8 @@ public sealed partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     private void ShowUserDetail(User user)
     {
-        //DialogParameters parameters = new DialogParameters()
-        //{
-        //    { nameof(User), user }
-        //};
-
-        //this._dialogService.ShowDialog(
-        //    nameof(UserDetailDialog),
-        //    parameters,
-        //    dialogResult =>
-        //    {
-        //        // UserDetailWindow 表示後の処理。
-        //    });
+        UserDetailWindow userDetailWindow = AppSharedServices.Services.GetService<UserDetailWindow>();
+        (userDetailWindow.DataContext as UserDetailWindowViewModel).SetUser(user);
+        userDetailWindow.ShowDialog();
     }
 }
