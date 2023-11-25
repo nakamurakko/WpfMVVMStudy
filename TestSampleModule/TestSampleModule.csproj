@@ -4,6 +4,10 @@
     <TargetFramework>net7.0-windows</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Authors>nakamurakko</Authors>
+
+    <Copyright>@ nakamurakko</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

@@ -4,6 +4,8 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>WpfMVVM</AssemblyName>
+    <Authors>nakamurakko</Authors>
+    <Copyright>@ nakamurakko</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />

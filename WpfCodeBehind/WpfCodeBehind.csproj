@@ -4,6 +4,8 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>WpfCodeBehind</AssemblyName>
+    <Authors>nakamurakko</Authors>
+    <Copyright>@ nakamurakko</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\SampleModule\SampleModule.csproj" />
