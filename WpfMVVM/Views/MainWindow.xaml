@@ -12,6 +12,10 @@
         Height="300"
         Width="400">
 
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

@@ -4,9 +4,9 @@
 
  プロジェクト名  |     プロジェクトの種類
 ---------------- | ---------------------------
-WpfMVVM          | Prism Blank App (.NET Core)
-WpfCodeBehind    | Prism Blank App (.NET Core)
-SampleModule     | Prism Module (.NET Core)
+WpfMVVM          | CommunityToolkit.Mvvm を追加。 SampleModule を取り込み。
+WpfCodeBehind    | 追加パッケージ無し。 SampleModule を取り込み。
+SampleModule     | 共通クラスを定義。
 TestSampleModule | xUnit テスト プロジェクト
 
 ## WpfMVVM

@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
-using WpfMVVM.Services;
+﻿using System.Windows;
 
 namespace WpfMVVM.UserDetailWindows;
 
@@ -12,7 +10,5 @@ public partial class UserDetailWindow : Window
     public UserDetailWindow()
     {
         this.InitializeComponent();
-
-        this.DataContext = AppSharedServices.Services.GetService<UserDetailWindowViewModel>();
     }
 }
