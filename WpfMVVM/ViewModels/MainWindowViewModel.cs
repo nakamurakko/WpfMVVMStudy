@@ -86,8 +86,6 @@ public sealed partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     private void ShowUserDetail(User user)
     {
-        UserDetailWindow userDetailWindow = AppSharedServices.Services.GetService<UserDetailWindow>();
-        (userDetailWindow.DataContext as UserDetailWindowViewModel).SetUser(user);
-        userDetailWindow.ShowDialog();
+        this._dialogService.ShowDialog<UserDetailWindow>(new UserDetailWindowViewModel { User = user });
     }
 }

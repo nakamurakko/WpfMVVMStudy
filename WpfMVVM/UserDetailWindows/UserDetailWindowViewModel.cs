@@ -14,24 +14,4 @@ public sealed partial class UserDetailWindowViewModel : ObservableObject
     public UserDetailWindowViewModel()
     {
     }
-
-    public bool CanCloseDialog()
-    {
-        return true;
-    }
-
-    public void OnDialogClosed()
-    {
-
-    }
-
-    public void OnDialogOpened(/*IDialogParameters parameters*/)
-    {
-        //User = parameters.GetValue<User>(nameof(User));
-    }
-
-    public void SetUser(User user)
-    {
-        this.User = user;
-    }
 }
