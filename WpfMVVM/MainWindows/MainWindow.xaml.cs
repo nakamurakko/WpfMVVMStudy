@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WpfMVVM.Views;
+namespace WpfMVVM.MainWindows;
 
 /// <summary>
 /// メイン画面。

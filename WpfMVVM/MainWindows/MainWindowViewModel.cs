@@ -10,7 +10,7 @@ using WpfMVVM.Services;
 using WpfMVVM.Services.Interfaces;
 using WpfMVVM.UserDetailWindows;
 
-namespace WpfMVVM.ViewModels;
+namespace WpfMVVM.MainWindows;
 
 /// <summary>
 /// ユーザー詳細画面用 ViewModel。
