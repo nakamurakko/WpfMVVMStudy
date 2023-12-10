@@ -6,6 +6,21 @@
 version: 2
 updates:
   - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directory: "/SampleModule" # Location of package manifests
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/TestSampleModule" # Location of package manifests
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/WpfCodeBehind" # Location of package manifests
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/WpfMVVM" # Location of package manifests
     schedule:
       interval: "weekly"
