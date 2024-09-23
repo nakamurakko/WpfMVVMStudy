@@ -7,6 +7,6 @@
     <Copyright>@ nakamurakko</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
   </ItemGroup>
 </Project>
