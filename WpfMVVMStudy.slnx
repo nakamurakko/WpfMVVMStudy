@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SampleModule/SampleModule.csproj" />
+  <Project Path="TestSampleModule/TestSampleModule.csproj" />
+  <Project Path="WpfCodeBehind/WpfCodeBehind.csproj" />
+  <Project Path="WpfMVVM/WpfMVVM.csproj" />
+</Solution>
